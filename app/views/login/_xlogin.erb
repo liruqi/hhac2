@@ -1,0 +1,17 @@
+<h1>HHAC Login</h1>
+
+<% form_for :login, :url => { :action => "login" } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label 'Username' %><br />
+    <%= f.text_field :uname %>
+  </p>
+  <p>
+    <%= f.label 'Password' %><br />
+    <%= f.password_field :passwd %>
+  </p>
+  <p>
+    <%= f.submit 'Login' %>
+  </p>
+<% end %>

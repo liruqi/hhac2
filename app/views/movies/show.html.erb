@@ -1,0 +1,59 @@
+<p>
+  <b>Title:</b>
+  <%=h @movie.title %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%=h @movie.tags %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%=h @movie.info %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%=h @movie.path %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @movie.user.uname %>
+</p>
+
+<div id="player">
+  <object type="application/x-shockwave-flash" data="/player.swf" width="480" height="360" id="vcastr3">
+    <param name="movie" value="player.swf"/> 
+    <param name="allowFullScreen" value="true" />
+    <param name="FlashVars" value="xml=
+      <vcastr>
+        <channel>
+          <item>
+            <source>http://localhost:3000/movies/stream/<%= @movie.id %></source>
+            <duration></duration>
+            <title></title>
+          </item>
+        </channel>
+        <config>
+        </config>
+        <plugIns>
+        </plugIns>
+      </vcastr>"/>
+  </object>
+</div>
+
+<div id="div-comments">
+  <div id="comments">
+    Loading comments...
+  </div>
+  <div id="new-comment">
+  </div>
+</div>
+
+<script type="text/javascript">
+<%= remote_function :method => "get",
+                    :url    => "/comments/movie/#{@movie.id}",
+                    :update => "comments" %>
+</script>

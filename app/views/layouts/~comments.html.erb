@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Movie Directory</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>Movies: <%= controller.action_name %></title>
+  <%= javascript_include_tag "prototype" %>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <!--
+  <script type="text/javascript" src="/hhac/prototype.js"></script>
+  <link type="text/css" href="hhac.css" rel="stylesheet"/>
+  -->
+
+  <style type="text/css">
+/*
+page
+  header
+  content
+    nav
+    main
+      left
+      right
+  footer
+*/
+#page {
+background: #eeeeee none repeat scroll 0 0;
+margin: 0 auto;
+padding: 0;
+width: 960px;
+}
+#header {
+position: relative;
+background-color: #cccccc;
+margin: 0;
+padding: 2px;
+text-align: center;
+}
+#content {
+position: relative;
+//margin: 0 auto 10px;
+padding: 0;
+width: 100%;
+}
+#nav {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+background-color: #bbbbff;
+}
+#nav ul {
+margin: 0;
+padding: 0;
+width: 100%;
+}
+#nav li {
+font-weight: bold;
+display: inline;
+float: left;
+line-height: 2em;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin: 0;
+padding: 0 10px;
+}
+#nav li :hover {
+position: relative;
+background-color: #66bb66;
+}
+#main {
+position: relative;
+background-color: #ffffcc;
+}
+#left {
+display: inline;
+float: left;
+margin-top: 50px;
+overflow: hidden;
+width: 55%;
+//background-color: #cceecc;
+}
+#right {
+display: inline;
+float: right;
+margin-top: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+width: 44%;
+background-color: #ccddcc;
+}
+#footer {
+position: relative;
+left: 0;
+top: 20px;
+padding: 10px;
+background-color: #cccccc;
+text-align: left;
+clear: both;
+}
+  </style>
+</head>
+
+<body>
+  <div id="page">
+    <div id="header">
+      <h1>Home of Harmless Amination & Comic</h1>
+    </div>
+
+    <div id="content">
+      <div id="nav">
+        <ul>
+          <li><a href="/hhac/login.php">Login</a></li>
+          <li><a href="/hhac/register.php">Register</a></li>
+        </ul>
+      </div>
+      <div id="main">
+        <div id="left">
+          <p style="color:green"><%= flash[:notice] %></p>
+
+          <%= yield %>
+
+        </div>
+        <div id="right">
+            <p>This is right part of div `main`</p>
+            <div id="result_div">
+              this is `result_div' ...
+            </div>
+            <%= link_to_remote "Wait for it...",
+                               :method => 'get',
+                               :url => '/comments/1',
+                               :update => 'result_div',
+                               :type => :synchronous %>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+            <p>This is footer</p>
+      <!--
+      <img src="/hhac/fox1.jpg" width="48%"/>
+      <img src="/hhac/fox2.jpg" width="48%"/>
+      -->
+    </div>
+  </div>
+</body>
+</html>

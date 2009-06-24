@@ -1,0 +1,7 @@
+<% if user %>
+<li><%= link_to user.uname, :controller => :users, :action => :show, :id => user.id %></li>
+<li><%= link_to "Logout", "/login/logout" %></li>
+<% else %>
+<li><%= link_to_function "Login", "render_ajaxCon_for_xlogin()" %>
+<li><%= link_to "Register", :controller => :users, :action => :new %></li>
+<% end %>
