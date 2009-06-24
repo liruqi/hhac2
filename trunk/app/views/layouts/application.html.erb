@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Movie Directory</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>Movies: <%= controller.action_name %></title>
+  <%= javascript_include_tag "prototype" %>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <!--
+  <script type="text/javascript" src="/hhac/prototype.js"></script>
+  <link type="text/css" href="hhac.css" rel="stylesheet"/>
+  -->
+  <script type="text/javascript">
+function render_ajaxCon_for_xlogin()
+{
+  state = $("ajaxCon").getAttribute("state");
+  if (state == "empty")
+  {
+    new Ajax.Updater("ajaxCon", "/login/xlogin", {
+      method:"get", evalScript:true, asynchronous:false});
+    $("ajaxCon").setAttribute("state", "nonempty");
+  }
+  else
+  {
+    while(child = $("ajaxCon").firstChild)
+      $("ajaxCon").removeChild(child);
+    $("ajaxCon").setAttribute("state", "empty");
+  }
+}
+  </script>
+
+  <style type="text/css">
+/*
+page
+  header
+  content
+    nav
+    main
+      left
+      right
+  footer
+*/
+#page {
+background: #eeeeee none repeat scroll 0 0;
+margin: 0 auto;
+padding: 0;
+width: 960px;
+}
+#header {
+position: relative;
+background-color: #cccccc;
+margin: 0;
+padding: 2px;
+text-align: center;
+}
+#content {
+position: relative;
+//margin: 0 auto 10px;
+padding: 0;
+width: 100%;
+}
+#nav {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+background-color: #bbbbff;
+}
+#login-info {
+position: relative;
+left: 600px;
+}
+#nav ul {
+margin: 0;
+padding: 0;
+width: 100%;
+}
+#nav li {
+font-weight: bold;
+display: inline;
+float: left;
+line-height: 2em;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin: 0;
+padding: 0 10px;
+}
+#nav li :hover {
+position: relative;
+background-color: #66bb66;
+}
+#main {
+position: relative;
+background-color: #ffffcc;
+}
+#left {
+display: inline;
+float: left;
+margin-top: 50px;
+overflow: hidden;
+width: 55%;
+//background-color: #cceecc;
+}
+#right {
+display: inline;
+float: right;
+margin-top: 50px;
+//padding-top: 50px;
+//padding-bottom: 50px;
+padding-left: 20px;
+width: 40%;
+background-color: #ccddcc;
+}
+#footer {
+position: relative;
+left: 0;
+top: 20px;
+padding: 10px;
+background-color: #cccccc;
+text-align: left;
+clear: both;
+}
+  </style>
+</head>
+
+<body>
+  <div id="page">
+    <div id="header">
+      <h1>Home of Harmless Amination & Comic</h1>
+    </div>
+
+    <div id="content">
+      <div id="nav">
+        <ul>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/movies">Movies</a></li>
+          <li><a href="/comments">Comments</a></li>
+        </ul>
+        <div id="login-info">
+        </div>
+        <script type="text/javascript">
+        <%= remote_function :method => "get",
+                            :url    => "/login/loginfo",
+                            :update => "login-info",
+                            :type   => :synchronous %>
+        </script>
+      </div>
+      <div id="main">
+        <div id="left">
+          <p style="color:green"><%= flash[:notice] %></p>
+
+          <%= yield %>
+
+        </div>
+        <div id="right">
+          <div id="ajaxCon" state="empty">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>This is footer</p>
+    </div>
+  </div>
+</body>
+</html>

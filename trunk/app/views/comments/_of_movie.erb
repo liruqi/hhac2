@@ -1,0 +1,13 @@
+<p>
+<h3>Comments of movie
+<%= link_to the_movie.title, :controller => :movies, :action => :show, :id => the_movie.id %></h3>
+
+<ul>
+<% comments.each do |comment| %>
+<li>
+<b><%= link_to comment.user.uname, :controller => :users, :action => :show, :id => comment.user.id %></b> posted at 
+<%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %><br />
+<%=h comment.content %></li>
+<% end %>
+</ul>
+</p>
