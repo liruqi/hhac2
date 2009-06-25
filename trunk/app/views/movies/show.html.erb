@@ -6,7 +6,7 @@
       <vcastr>
         <channel>
           <item>
-            <source>http://192.168.0.51:3000/movies/stream/<%= @movie.id %></source>
+            <source>http://<%= request.host_with_port%>/movies/stream/<%= @movie.id %></source>
             <duration></duration>
             <title></title>
           </item>
@@ -37,6 +37,7 @@
 <% end %>
 
   <% else %>
+    <hr>
     Please <b><%= link_to "login", "/login" %></b> to post a new comment.
   <% end %>
   </div></p>

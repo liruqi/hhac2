@@ -1,0 +1,151 @@
+/*
+page
+  header
+  content
+    nav
+    main
+      left
+      right
+  footer
+*/
+
+.info-tag {
+color: #ff0099;
+}
+a {
+color:#00f;
+text-decoration:none;
+}
+a:visited {
+color:#a06600;
+}
+a:hover {
+color:#00f;
+background: none;
+text-decoration:underline;
+}
+hr {
+color: #eee;
+}
+#page {
+background: none repeat scroll 0 0;
+margin: 0 auto;
+padding: 0;
+width: 960px;
+}
+#header {
+position: relative;
+background-color: #ccccee;
+margin: 0;
+padding: 2px;
+text-align: center;
+}
+#content {
+position: relative;
+//margin: 0 auto 10px;
+padding: 0;
+width: 100%;
+}
+#nav {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+background-color: #ffffff;
+}
+#login-info {
+position: relative;
+left: 650px;
+}
+#nav ul {
+margin: 0;
+padding: 0;
+width: 100%;
+}
+#nav li {
+font-weight: bold;
+display: inline;
+float: left;
+line-height: 2em;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin: 0;
+padding: 0 10px;
+}
+#nav li :hover {
+position: relative;
+background-color: #66bb66;
+}
+#main {
+position: relative;
+background-color: #ffffcc;
+}
+#left {
+display: inline;
+float: left;
+margin-top: 28px;
+overflow: hidden;
+width: 55%;
+//background-color: #cceecc;
+}
+#player {
+width: 480px;
+height: 360px;
+padding: 0 25px;
+background-color: #000;
+}
+.mvlist-ul {
+margin: 0;
+padding: 0 0 15px 0;
+width: 100%;
+}
+.mvlist-item {
+line-height: 20px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin: 0;
+padding: 0;
+background-color: #ddeedd;
+}
+.mvlist-item-head {
+background-color: #ddd;
+}
+.comment-list-ul {
+margin: 0;
+padding: 0 0 15px 0;
+width: 100%;
+}
+.comment-list-item {
+line-height: 20px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+.comment-list-item-head {
+background-color: #ddd;
+}
+.comment-list-item-body {
+padding: 5px 0;
+}
+#right {
+display: inline;
+float: right;
+margin-top: 40px;
+margin-right: 12px;
+padding: 0 10px;
+width: 40%;
+background-color: #ccddcc;
+}
+#footer {
+position: relative;
+left: 0;
+top: 20px;
+padding: 5px;
+background-color: #cccccc;
+text-align: center;
+clear: both;
+}
