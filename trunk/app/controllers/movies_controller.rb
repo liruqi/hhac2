@@ -40,6 +40,9 @@ class MoviesController < ApplicationController
   # GET /movies/1/edit
   def edit
     @movie = Movie.find(params[:id])
+    unless current_user && (current_user.privilege>1 || current_user.id==@movie.user_id)
+      redirect_to "/404.html"
+    end
   end
 
   # POST /movies
@@ -67,29 +70,36 @@ class MoviesController < ApplicationController
   # PUT /movies/1.xml
   def update
     @movie = Movie.find(params[:id])
-
-    respond_to do |format|
-      if @movie.update_attributes(params[:movie])
-        flash[:notice] = 'Movie was successfully updated.'
-        format.html { redirect_to(@movie) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @movie.errors, :status => :unprocessable_entity }
+    if current_user && (current_user.privilege>1 || current_user.id==@movie.id)
+      respond_to do |format|
+        if @movie.update_attributes(params[:movie])
+          flash[:notice] = 'Movie was successfully updated.'
+          format.html { redirect_to(@movie) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @movie.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      redirect_to "/404.html"
     end
   end
 
   # DELETE /movies/1
   # DELETE /movies/1.xml
   def destroy
-    @movie = Movie.find(params[:id])
-    File.delete @movie.path
-    @movie.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(movies_url) }
-      format.xml  { head :ok }
+    if current_user && current_user.privilege > 1
+      @movie = Movie.find(params[:id])
+      File.delete @movie.path
+      @movie.destroy
+     
+      respond_to do |format|
+        format.html { redirect_to(movies_url) }
+        format.xml  { head :ok }
+      end
+    else
+      redirect_to "/404.html"
     end
   end
 
