@@ -2,6 +2,7 @@
 <h3>Comments of movie
 <%= link_to the_movie.title, :controller => :movies, :action => :show, :id => the_movie.id %></h3>
 
+<% if comments.size > 0 %>
 <ul>
 <% comments.each do |comment| %>
 <li>
@@ -10,4 +11,7 @@
 <%=h comment.content %></li>
 <% end %>
 </ul>
+<% else %>
+[没有评论]
+<% end %>
 </p>

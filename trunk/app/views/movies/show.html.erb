@@ -1,28 +1,3 @@
-<p>
-  <b>Title:</b>
-  <%=h @movie.title %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <%=h @movie.tags %>
-</p>
-
-<p>
-  <b>Info:</b>
-  <%=h @movie.info %>
-</p>
-
-<p>
-  <b>Path:</b>
-  <%=h @movie.path %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @movie.user.uname %>
-</p>
-
 <div id="player">
   <object type="application/x-shockwave-flash" data="/player.swf" width="480" height="360" id="vcastr3">
     <param name="movie" value="player.swf"/> 
@@ -31,7 +6,7 @@
       <vcastr>
         <channel>
           <item>
-            <source>http://localhost:3000/movies/stream/<%= @movie.id %></source>
+            <source>http://192.168.0.51:3000/movies/stream/<%= @movie.id %></source>
             <duration></duration>
             <title></title>
           </item>
@@ -48,12 +23,50 @@
   <div id="comments">
     Loading comments...
   </div>
+  <p><div id="postResult"></div>
   <div id="new-comment">
-  </div>
+  <% if current_user %>
+<% comment = Comment.new %>
+<% form_for comment, :url=>{:controller=>"comments",:action=>"xpost"} do |f| %>
+  <p>
+    <b><%= f.label :content, "New Comment" %></b><br />
+    <%= f.text_area :content, :size=>"50x5" %>
+    <%= f.hidden_field :movie_id, :value=>@movie.id %><br />
+    <%= submit_tag "Post", :onclick=>"postComment();return false;" %>
+  </p>
+<% end %>
+
+  <% else %>
+    Please <b><%= link_to "login", "/login" %></b> to post a new comment.
+  <% end %>
+  </div></p>
 </div>
 
 <script type="text/javascript">
-<%= remote_function :method => "get",
+postComment = function(){
+var content =  $('comment_content').value;
+if(new RegExp(/^\s*$/).test(content))
+{
+  alert("评论不能为空！");
+  return false;
+}
+<%= remote_function \
+    :update => "postResult", \
+    :method => "post", \
+    :url =>{:controller=>"comments",:action=>"xpost"}, \
+    :with => "\"comment[content]=\"+content+\"&comment[movie_id]=#{@movie.id}\"" %>
+updateComments();
+}// end of postComment
+
+//-------------------------------------------
+updateComments = function(){<%= remote_function :method => "get",
                     :url    => "/comments/movie/#{@movie.id}",
                     :update => "comments" %>
+}// end of updateComments
+updateComments();
+
+//-------------------------------------------
+<%= remote_function :method => "get",
+    :url => "/movies/info/#{@movie.id}",
+    :update => "ajaxCon" %>
 </script>

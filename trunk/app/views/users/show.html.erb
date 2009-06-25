@@ -18,6 +18,9 @@
   <%=h @user.utype %>
 </p>
 
-
+<% if current_user.privilege == 3 %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+<% if current_user.privilege > 1 %>
 <%= link_to 'Back', users_path %>
+<% end %>

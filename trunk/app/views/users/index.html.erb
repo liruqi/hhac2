@@ -10,17 +10,24 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%=h user.uname %></td>
-    <td><%=h user.passwd %></td>
-    <td><%=h user.email %></td>
-    <td><%=h user.utype %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to user.uname, user %></td>
+    <td><%= user.passwd %></td>
+    <td><%= user.email %></td>
+    <td><%= user.utype %></td>
+  <% if current_user.privilege == 3 %>
+    <td>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= link_to 'Destroy', user,
+                  :confirm => 'Are you sure?',
+                  :method => :delete %>
+    </td>
+  <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
+<% if current_user.privilege == 3 %>
 <%= link_to 'New user', new_user_path %>
+<% end %>

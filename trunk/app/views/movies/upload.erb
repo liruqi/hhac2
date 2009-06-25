@@ -1,0 +1,24 @@
+<h2>Upload New Movie</h2>
+
+<%= form_tag "/movies/save/1", :multipart=>true %>
+  <p>
+    <%= label_tag "<b>title (<span style='color:red'>*</span>)</b>" %><br />
+    <%= text_field_tag "movie[title]", nil, :size=>40 %>
+  </p>
+  <p>
+    <%= label_tag "<b>tags</b>" %><br />
+    <%= text_field_tag "movie[tags]", nil, :size=>40 %>
+  </p>
+  <p>
+    <%= label_tag "<b>information</b>" %><br />
+    <%= text_area_tag "movie[info]", nil, :size=>"52x5" %>
+  </p>
+  <p>
+    <%= label_tag "<b>path (<span style='color:red'>*</span>)</b>" %><br />
+    <%= file_field_tag "file", :size=>31 %>
+  </p>
+  <p>
+    <%= submit_tag 'Submit' %>
+  </p>
+
+<%= link_to 'Back', movies_path %>

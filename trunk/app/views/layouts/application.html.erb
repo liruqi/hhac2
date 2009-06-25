@@ -48,7 +48,7 @@ width: 960px;
 }
 #header {
 position: relative;
-background-color: #cccccc;
+background-color: #cceecc;
 margin: 0;
 padding: 2px;
 text-align: center;
@@ -97,10 +97,14 @@ background-color: #ffffcc;
 #left {
 display: inline;
 float: left;
-margin-top: 50px;
+margin-top: 38px;
 overflow: hidden;
 width: 55%;
 //background-color: #cceecc;
+}
+#player {
+width: 480px;
+height: 360px;
 }
 #right {
 display: inline;
@@ -116,9 +120,9 @@ background-color: #ccddcc;
 position: relative;
 left: 0;
 top: 20px;
-padding: 10px;
+padding: 5px;
 background-color: #cccccc;
-text-align: left;
+text-align: center;
 clear: both;
 }
   </style>
@@ -137,14 +141,23 @@ clear: both;
           <li><a href="/movies">Movies</a></li>
           <li><a href="/comments">Comments</a></li>
         </ul>
+
+        <!--
+        div `login-info` 在导航栏右端显示用户登录信息
+          如果没有登录，则给出 Login 和 Register 链接
+          如果已经登录，则给出 uname 和 Logout 链接
+        -->
         <div id="login-info">
+<% user = current_user %>
+<% if user %>
+<li><%= link_to user.uname, :controller => :users, :action => :show, :id => user.id %></li>
+<li><%= link_to "Logout", "/login/logout" %></li>
+<% else %>
+<li><%= link_to "Login", "/login/index" %>
+<li><%= link_to "Register", :controller => :users, :action => :new %></li>
+<% end %>
         </div>
-        <script type="text/javascript">
-        <%= remote_function :method => "get",
-                            :url    => "/login/loginfo",
-                            :update => "login-info",
-                            :type   => :synchronous %>
-        </script>
+
       </div>
       <div id="main">
         <div id="left">
@@ -161,7 +174,7 @@ clear: both;
     </div>
 
     <div id="footer">
-      <p>This is footer</p>
+      <p>Copyrighted by physacco@gmail.com, 2009</p>
     </div>
   </div>
 </body>
