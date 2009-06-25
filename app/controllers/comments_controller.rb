@@ -12,26 +12,24 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   # GET /comments/1.xml
-  def show
-    @comment = Comment.find(params[:id])
-
-#    render :partial => @comment
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @comment }
-    end
-  end
+  # def show
+  #   @comment = Comment.find(params[:id])
+  #   respond_to do |format|
+  #     format.html # show.html.erb
+  #     format.xml  { render :xml => @comment }
+  #   end
+  # end
 
   # GET /comments/new
   # GET /comments/new.xml
-  def new
-    @comment = Comment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
-  end
+  # def new
+  #   @comment = Comment.new
+  # 
+  #   respond_to do |format|
+  #     format.html # new.html.erb
+  #     format.xml  { render :xml => @comment }
+  #   end
+  # end
 
   # GET /comments/1/edit
   #   def edit
@@ -40,20 +38,20 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.xml
-  def create
-    @comment = Comment.new(params[:comment])
-
-    respond_to do |format|
-      if @comment.save
-        flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(@comment) }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @comment = Comment.new(params[:comment])
+  # 
+  #   respond_to do |format|
+  #     if @comment.save
+  #       flash[:notice] = 'Comment was successfully created.'
+  #       format.html { redirect_to(@comment) }
+  #       format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+  #     else
+  #       format.html { render :action => "new" }
+  #       format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+  #     end
+  #  end
+  #end
 
   # PUT /comments/1
   # PUT /comments/1.xml
@@ -75,12 +73,16 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
+    if current_user && current_user.privilege > 1
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+     
+      respond_to do |format|
+        format.html { redirect_to(comments_url) }
+        format.xml  { head :ok }
+      end
+    else
+      redirect_to "/404.html"
     end
   end
 
