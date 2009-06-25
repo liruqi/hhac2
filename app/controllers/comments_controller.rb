@@ -15,11 +15,11 @@ class CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
 
-    render :partial => @comment
-#    respond_to do |format|
-#      format.html # show.html.erb
-#      format.xml  { render :xml => @comment }
-#    end
+#    render :partial => @comment
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @comment }
+    end
   end
 
   # GET /comments/new
@@ -34,9 +34,9 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  def edit
-    @comment = Comment.find(params[:id])
-  end
+  #   def edit
+  #     @comment = Comment.find(params[:id])
+  #   end
 
   # POST /comments
   # POST /comments.xml
@@ -57,20 +57,20 @@ class CommentsController < ApplicationController
 
   # PUT /comments/1
   # PUT /comments/1.xml
-  def update
-    @comment = Comment.find(params[:id])
+  #   def update
+  #     @comment = Comment.find(params[:id])
 
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        flash[:notice] = 'Comment was successfully updated.'
-        format.html { redirect_to(@comment) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+  #     respond_to do |format|
+  #       if @comment.update_attributes(params[:comment])
+  #         flash[:notice] = 'Comment was successfully updated.'
+  #         format.html { redirect_to(@comment) }
+  #         format.xml  { head :ok }
+  #       else
+  #         format.html { render :action => "edit" }
+  #         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+  #       end
+  #     end
+  #   end
 
   # DELETE /comments/1
   # DELETE /comments/1.xml
@@ -90,6 +90,22 @@ class CommentsController < ApplicationController
     if the_movie
       comments = Comment.find :all, :conditions => {:movie_id => the_movie.id}
       render :partial => "of_movie", :locals => {:the_movie => the_movie, :comments => comments }
+    end
+  end
+
+  def xpost
+    puts "------------------------------------------------------------\n\n"
+    begin
+      comment = Comment.new params[:comment]
+      user = User.find session[:user_id]
+      movie = Movie.find comment.movie_id
+      raise if (comment.content =~ /^\s*$/) != nil
+
+      comment.user_id = user.id
+      comment.save
+      render :text => "<script type=\"text/javascript\">alert('发表成功')</script>"
+    rescue
+      render :text => "<script type=\"text/javascript\">alert('发表失败')</script>"
     end
   end
 end
