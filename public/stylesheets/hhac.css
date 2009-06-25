@@ -13,11 +13,12 @@ page
 color: #ff0099;
 }
 a {
-color:#00f;
+color: #00f;
 text-decoration:none;
 }
 a:visited {
-color:#a06600;
+//color:#a06600;
+color: #00f;
 }
 a:hover {
 color:#00f;
@@ -135,10 +136,10 @@ padding: 5px 0;
 display: inline;
 float: right;
 margin-top: 40px;
-margin-right: 12px;
+margin-right: 0px;
 padding: 0 10px;
 width: 40%;
-background-color: #ccddcc;
+background-color: #ddffdd;
 }
 #footer {
 position: relative;
@@ -148,4 +149,10 @@ padding: 5px;
 background-color: #cccccc;
 text-align: center;
 clear: both;
+}
+#upload-movie-form textarea {
+width: 75%;
+}
+#upload-movie-form .upload-movie-form-tfield input {
+width: 75%;
 }
