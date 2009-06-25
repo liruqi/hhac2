@@ -152,6 +152,7 @@ clear: both;
 }
 #upload-movie-form textarea {
 width: 75%;
+height: 100px;
 }
 #upload-movie-form .upload-movie-form-tfield input {
 width: 75%;
