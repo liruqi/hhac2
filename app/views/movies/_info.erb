@@ -1,24 +1,24 @@
 <p>
-  <b>Title:</b>
+  <b><span class="info-tag">Title:<span></b>
   <%= link_to @movie.title, @movie %>
 </p>
 
 <p>
-  <b>Tags:</b>
+  <b><span class="info-tag">Tags:<span></b>
   <%=h @movie.tags %>
 </p>
 
 <p>
-  <b>Info:</b>
+  <b><span class="info-tag">Info:<span></b>
   <%=h @movie.info %>
 </p>
 
 <p>
-  <b>Path:</b>
+  <b><span class="info-tag">Path:<span></b>
   <%=h @movie.path %>
 </p>
 
 <p>
-  <b>User:</b>
+  <b><span class="info-tag">User:<span></b>
   <%= link_to @movie.user.uname, @movie.user %>
 </p>

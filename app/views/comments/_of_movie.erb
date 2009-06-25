@@ -3,12 +3,19 @@
 <%= link_to the_movie.title, :controller => :movies, :action => :show, :id => the_movie.id %></h3>
 
 <% if comments.size > 0 %>
-<ul>
+<ul class="comment-list-ul">
 <% comments.each do |comment| %>
-<li>
-<b><%= link_to comment.user.uname, :controller => :users, :action => :show, :id => comment.user.id %></b> posted at 
-<%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %><br />
-<%=h comment.content %></li>
+<li class="comment-list-item">
+  <div class="comment-list-item-head">
+    <b><%= link_to comment.user.uname, :controller => :users, :action => :show, :id => comment.user.id %></b> posted at 
+<%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+<% if current_user && current_user.privilege > 1 %>
+<%= link_to 'Destroy', comment, :confirm => "Are you sure?", :method => :delete %>
+<% end %>
+  </div>
+  <div class="comment-list-item-body">
+<%= comment.content %></li>
+  </div>
 <% end %>
 </ul>
 <% else %>

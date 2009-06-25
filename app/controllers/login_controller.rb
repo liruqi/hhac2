@@ -6,9 +6,10 @@ class LoginController < ApplicationController
       user = User.authenticate @login.uname, @login.passwd
       if user
         session[:user_id] = user.id
-        uri = session[:original_uri]
-        session[:original_uri] = nil
-        redirect_to(uri || {:controller => :users, :action => :index})
+#        uri = session[:original_uri]
+#        session[:original_uri] = nil
+#        redirect_to(uri || {:controller => :users, :action => :index})
+        redirect_to user
       else
         flash[:notice] = "Invalid user/password combination"
         redirect_to :controller => :login, :action => :index

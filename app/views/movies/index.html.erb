@@ -1,31 +1,29 @@
-<h1>Listing movies</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Tags</th>
-    <th>Info</th>
-    <th>User</th>
-  </tr>
+<h2>Available movies</h2>
 
 <% @movies.each do |movie| %>
-  <tr>
-    <td><%= link_to movie.title, movie %></td>
-    <td><%=h movie.tags %></td>
-    <td><%=h movie.info %></td>
-    <td><%= link_to movie.user.uname, movie.user %></td>
+<!--  <tr> -->
+  <ul class="mvlist-ul">
+    <li class="mvlist-item">
+      <div class="mvlist-item-head">
+        <b><%= link_to movie.title, movie %></b>
+        by <%= link_to movie.user.uname, movie.user %><br/>
+      </div>
+      <b><span class="info-tag">Tags:</span></b><%= movie.tags %><br/>
+      <b><span class="info-tag">Info:</span></b><%= movie.info %><br/>
     <% if current_user && (current_user.privilege>1 || current_user.id==movie.user_id)%>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+    <%= link_to 'Edit', edit_movie_path(movie) %>
     <% end %>
     <% if current_user && current_user.privilege > 1 %>
-    <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
-  </tr>
+    </li>
+  </ul>
 <% end %>
-</table>
 
 <br />
 
 <% if current_user %>
 <%= link_to 'Upload New Movie', :action => :upload, :id => 1 %>
+<% else %>
+Please <b><%= link_to "login", "/login" %></b> to upload a new movie.
 <% end %>

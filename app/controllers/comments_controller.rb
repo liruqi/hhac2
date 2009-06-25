@@ -78,8 +78,9 @@ class CommentsController < ApplicationController
       @comment.destroy
      
       respond_to do |format|
-        format.html { redirect_to(comments_url) }
-        format.xml  { head :ok }
+#        format.html { redirect_to(comments_url) }
+        format.html { redirect_to request.referer }
+#        format.xml  { head :ok }
       end
     else
       redirect_to "/404.html"

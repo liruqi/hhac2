@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   def authorize
     unless @_user = User.find_by_id(session[:user_id])
-      session[:original_uri] = request.request_uri
+#      session[:original_uri] = request.request_uri
       flash[:notice] = "Please login first"
       redirect_to :controller => :login, :action => :index
     end
