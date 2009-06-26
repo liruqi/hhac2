@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user, :logged_in?
+
+  def render_404
+    render :file => "#{RAILS_ROOT}/public/404.html",  :status => 404
+  end
+
+  helper_method :render_404
 end

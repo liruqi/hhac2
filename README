@@ -24,3 +24,17 @@ $ rake db:migrate
 
 === 测试－启动服务
 $ ./script/server
+
+
+
+
+---------------------------------------------------------------------
+./script/generate scaffold album title:string user_id:integer
+
+---------------------------------------------------------------------
+数据model添加一列：
+./script/generate add_column
+然后编辑生成的 db/migrate/*_add_column.rb 文件
+在self.up中增加几行，例如：
+  add_column :movies, :album_id, :integer
+  Movie.update_all("album_id=1")

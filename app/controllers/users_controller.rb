@@ -55,7 +55,7 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user }
       end
     rescue
-      redirect_to "/404.html"
+      render_404
     end
   end
 

@@ -37,6 +37,7 @@ function render_ajaxCon_for_xlogin()
     <div id="content">
       <div id="nav">
         <ul>
+          <li><a href="/albums">Albums</a></li>
           <li><a href="/movies">Movies</a></li>
 <% user = current_user %>
 <% if user && user.privilege > 1 %>
@@ -52,7 +53,7 @@ function render_ajaxCon_for_xlogin()
 <% if user && user.privilege > 1 %>
         <div id="login-info">
 <% else %>
-        <div id="login-info" style="position:relative;left:750px">
+        <div id="login-info" style="position:relative;left:680px">
 <% end %>
 <% if user %>
 <li><%= link_to user.uname, :controller => :users, :action => :show, :id => user.id %></li>
@@ -79,7 +80,14 @@ function render_ajaxCon_for_xlogin()
     </div>
 
     <div id="footer">
-      <p>Copyrighted by physacco@gmail.com, 2009</p>
+      <div id="foot-logo">
+      <%= image_tag "hhac.gif", :alt=>"hhac.gif" %>
+      </div>
+      <div id="foot-stuff">
+      河蟹之家
+      <%= link_to "关于HHAC", "/hhac/about" %><br/>
+      (c) 2009 HHAC. All rights reserved.
+      </div>
     </div>
   </div>
 </body>

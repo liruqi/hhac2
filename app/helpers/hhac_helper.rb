@@ -1,0 +1,2 @@
+module HhacHelper
+end

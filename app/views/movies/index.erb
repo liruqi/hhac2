@@ -1,0 +1,15 @@
+<h2>Available movie</h2>
+
+<div id="movie-list">
+</div>
+<script type="text/javascript">
+<%= remote_function :url => "/movies/list/select", :update => "movie-list" %>
+</script>
+
+<br />
+
+<% if current_user %>
+<%= link_to 'Upload New Movie', :action => :upload, :id => 1 %>
+<% else %>
+Please <b><%= link_to "login", "/login" %></b> to upload a new movie.
+<% end %>

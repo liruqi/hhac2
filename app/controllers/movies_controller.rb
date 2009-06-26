@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
   #    # format.xml  { render :xml => @movie }
   #    end
   #  else
-  #    redirect_to '/404.html'
+  #   render_404
   #  end
   #end
 
@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
   def edit
     @movie = Movie.find(params[:id])
     unless current_user && (current_user.privilege>1 || current_user.id==@movie.user_id)
-      redirect_to "/404.html"
+      render_404
     end
   end
 
@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
   #      end
   #    end
   #  else
-  #    redirect_to '/404.html'
+  #   render_404
   #  end
   #end
 
@@ -82,7 +82,7 @@ class MoviesController < ApplicationController
         end
       end
     else
-      redirect_to "/404.html"
+      render_404
     end
   end
 
@@ -99,7 +99,7 @@ class MoviesController < ApplicationController
         format.xml  { head :ok }
       end
     else
-      redirect_to "/404.html"
+      render_404
     end
   end
 
@@ -112,8 +112,7 @@ class MoviesController < ApplicationController
                 :disposition => "inline",
                 :stream => true
     rescue
-      path404 = File.join File.dirname(__FILE__), "../../public/404.html"
-      render :file => path404, :status => 404
+      render_404
     end
   end
 
@@ -121,7 +120,7 @@ class MoviesController < ApplicationController
     if current_user
       @movie = Movie.new
     else
-      redirect_to '/404.html'
+      render_404
     end
   end
 
@@ -141,6 +140,7 @@ class MoviesController < ApplicationController
 
           movie.path = f.path
           movie.user_id = current_user.id
+          movie.album_id = 1
           movie.save
         rescue
           raise "Failed to save data."
@@ -158,5 +158,26 @@ class MoviesController < ApplicationController
   def info
     @movie = Movie.find_by_id params[:id]
     render :partial => "info"
+  end
+
+  def list
+    begin
+      raise "id must be select" if params[:id] != "select"
+      user_id = params[:user_id]
+      album_id = params[:album_id]
+      if user_id
+        user = User.find user_id
+        @movies = user.movies
+      elsif album_id
+        album = Album.find album_id
+        @movies = album.movies
+      else
+        @movies = Movie.all
+      end
+      render :partial => "list"
+    rescue
+      render :text=>"Exception: #{$!}"
+      # render_404
+    end
   end
 end
