@@ -25,38 +25,103 @@ color:#00f;
 background: none;
 text-decoration:underline;
 }
+#nav a.navlink {
+color: #000;
+font-size: 14px;
+text-decoration:none;
+padding: 4px 20px;
+font-family: Verdana,"宋体",sans-serif;
+border: 1px solid;
+border-color: #fff;
+}
+#nav a.navlink:visited {
+color: #000;
+text-decoration:none;
+border: 1px solid;
+border-color: #fff;
+}
+#nav a.navlink:hover {
+text-decoration:none;
+background: none;
+border: 1px solid;
+border-color: #ff0099;
+}
 hr {
 color: #eee;
 }
 #page {
-background: none repeat scroll 0 0;
 margin: 0 auto;
 padding: 0;
 width: 960px;
+overflow: none;
 }
 #header {
-position: relative;
-background-color: #ccccee;
 margin: 0;
 padding: 2px;
 text-align: center;
 }
-#content {
+#head-logo {
 position: relative;
-//margin: 0 auto 10px;
+float: left;
+width: 40%;
+}
+#head-stuff {
+position: relative;
+float: left;
+width: 40%;
+}
+#login-info {
+//position: relative;
+background-color: #cccccc;
+text-align: right;
+}
+#login-info ul {
+margin: 0;
 padding: 0;
 width: 100%;
+}
+#login-info li {
+font-weight: bold;
+display: inline;
+//line-height: 2em;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin: 0;
+//padding: 0 10px;
+}
+#login-info a {
+color: #000;
+font-size: 12px;
+padding: 4px 20px;
+font-family: Verdana,"宋体",sans-serif;
+border: 1px solid;
+border-color: #fff;
+}
+#login-info a:visited {
+color: #000;
+}
+#login-info a:hover {
+text-decoration:none;
+background: none;
+border-color: #ff0099;
+}
+#content {
+position: relative;
+//margin: 20px auto 10px;
+padding: 0;
+min-height: 400px;
+width: 100%;
+clear: both;
 }
 #nav {
 position: absolute;
 top: 0;
 left: 0;
+margin: 15px 0;
+padding: 0;
 width: 100%;
 background-color: #ffffff;
-}
-#login-info {
-position: relative;
-left: 570px;
 }
 #nav ul {
 margin: 0;
@@ -74,12 +139,9 @@ list-style-type: none;
 margin: 0;
 padding: 0 10px;
 }
-#nav li :hover {
-position: relative;
-background-color: #66bb66;
-}
 #main {
 position: relative;
+top: 25px;
 background-color: #ffffcc;
 }
 #left {
