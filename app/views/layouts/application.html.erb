@@ -28,41 +28,44 @@ function render_ajaxCon_for_xlogin()
 
 </head>
 
+<% user = current_user %>
 <body>
   <div id="page">
     <div id="header">
-      <h1>Home of Harmless Amination & Comic</h1>
+      <div id="head-logo">
+      <%= image_tag "hhac-top.gif", :alt=>"hhac-top.gif" %>
+      </div>
+      <div id="head-stuff">
+
+
+        <% if user && user.privilege > 1 %>
+        <div id="login-info">
+        <% else %>
+        <div id="login-info" style="position:relative;left:580px">
+        <% end %>
+        <% if user %>
+<li><%= link_to user.uname, "/users/#{user.id}", :class=>"login-link" %></li>
+<li><%= link_to "退出", "/login/logout", :class=>"login-link" %></li>
+<% else %>
+<li><%= link_to "登录", "/login/index", :class=>"login-link" %>
+<li><%= link_to "注册", "/users/new", :class=>"login-link" %></li>
+<% end %>
+        </div>
+
+
+      </div>
     </div>
 
     <div id="content">
       <div id="nav">
         <ul>
-          <li><a href="/albums">Albums</a></li>
-          <li><a href="/movies">Movies</a></li>
-<% user = current_user %>
-<% if user && user.privilege > 1 %>
-          <li><a href="/comments">Comments</a></li>
-<% end %>
+          <li><a class="navlink" href="/albums">专辑</a></li>
+          <li><a class="navlink" href="/movies">列表</a></li>
+          <% if user && user.privilege > 1 %>
+          <li><a class="navlink" href="/comments">评论</a></li>
+          <% end %>
         </ul>
 
-        <!--
-        div `login-info` 在导航栏右端显示用户登录信息
-          如果没有登录，则给出 Login 和 Register 链接
-          如果已经登录，则给出 uname 和 Logout 链接
-        -->
-<% if user && user.privilege > 1 %>
-        <div id="login-info">
-<% else %>
-        <div id="login-info" style="position:relative;left:680px">
-<% end %>
-<% if user %>
-<li><%= link_to user.uname, :controller => :users, :action => :show, :id => user.id %></li>
-<li><%= link_to "Logout", "/login/logout" %></li>
-<% else %>
-<li><%= link_to "Login", "/login/index" %>
-<li><%= link_to "Register", :controller => :users, :action => :new %></li>
-<% end %>
-        </div>
 
       </div>
       <div id="main">
