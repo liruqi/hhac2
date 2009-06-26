@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :movies, :dependent => :destroy
+  has_many :movies,   :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :albums,   :dependent => :destroy
 
   validates_presence_of   :uname
   validates_uniqueness_of :uname

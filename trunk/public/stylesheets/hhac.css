@@ -56,7 +56,7 @@ background-color: #ffffff;
 }
 #login-info {
 position: relative;
-left: 650px;
+left: 570px;
 }
 #nav ul {
 margin: 0;
@@ -135,20 +135,41 @@ padding: 5px 0;
 #right {
 display: inline;
 float: right;
-margin-top: 40px;
-margin-right: 0px;
-padding: 0 10px;
-width: 40%;
-background-color: #ddffdd;
+margin: 40px 0 0 0;
+width: 42%;
+//background-color: #ddffdd;
+}
+#ajaxCon {
+}
+.ajax-element {
+margin: 0 0 20px 0;
+}
+.ajax-element-head {
+background-color: #ededed;
+}
+.ajax-element-body {
+padding: 0;
+}
+#ajaxCon-movie-info {
+background-color: #ddeedd;
 }
 #footer {
 position: relative;
 left: 0;
 top: 20px;
 padding: 5px;
-background-color: #cccccc;
 text-align: center;
 clear: both;
+border: 1px dashed #bfbfbf;
+border-width: 1px 0 0;
+}
+#foot-logo {
+position: relative;
+float:left;
+}
+#foot-stuff {
+position: relative;
+float:right;
 }
 #upload-movie-form textarea {
 width: 75%;

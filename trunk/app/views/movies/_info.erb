@@ -1,35 +1,43 @@
-正在播放
-<p>
-  <b><span class="info-tag">Title:<span></b>
-  <%= link_to @movie.title, @movie %>
-</p>
+<div class="ajax-element">
+  <div class="ajax-element-head">
+    <b>正在播放</b>
+  </div>
 
-<p>
-  <b><span class="info-tag">Tags:<span></b>
-  <%=h @movie.tags %>
-</p>
+  <div id="ajaxCon-movie-info" class="ajax-element-body">
+      <b><span class="info-tag">Title:<span></b>
+      <%= link_to @movie.title, @movie %><br/>
+      <b><span class="info-tag">Album:<span></b>
+      <%= link_to @movie.album.title, @movie.album %><br/>
+      <b><span class="info-tag">Tags:<span></b>
+      <%=h @movie.tags %><br/>
+      <b><span class="info-tag">Info:<span></b>
+      <%=h @movie.info %><br/>
+      <b><span class="info-tag">Path:<span></b>
+      <%=h @movie.path %><br/>
+      <b><span class="info-tag">User:<span></b>
+      <%= link_to @movie.user.uname, @movie.user %>
+  </div>
+</div>
 
-<p>
-  <b><span class="info-tag">Info:<span></b>
-  <%=h @movie.info %>
-</p>
+<div class="ajax-element">
+  <div class="ajax-element-head">
+    <b>此专辑的其他视频</b>
+  </div>
+  <div id="other-movies-of-album" class="ajax-element-body">
+    xxx
+  </div>
+  <script type="text/javascript">
+  <%= remote_function \
+      :update => "other-movies-of-album", \
+      :url => "/movies/list/select?album_id=#{@movie.album.id}" %>
+  </script>
+</div>
 
-<p>
-  <b><span class="info-tag">Path:<span></b>
-  <%=h @movie.path %>
-</p>
-
-<p>
-  <b><span class="info-tag">User:<span></b>
-  <%= link_to @movie.user.uname, @movie.user %>
-</p>
-
-<div >
-<p>
-此专辑的其他视频
-</p>
-
-<p>
-此用户的其他专辑/视频
-</p>
+<div class="ajax-element">
+  <div class="ajax-element-head">
+    <b>此用户的其他专辑/视频</b>
+  </div>
+  <div class="ajax-element-body">
+    xxx
+  </div>
 </div>

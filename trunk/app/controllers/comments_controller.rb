@@ -83,7 +83,7 @@ class CommentsController < ApplicationController
 #        format.xml  { head :ok }
       end
     else
-      redirect_to "/404.html"
+      render_404
     end
   end
 

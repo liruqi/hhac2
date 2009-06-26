@@ -1,0 +1,16 @@
+<p>
+  <b>Title:</b>
+  <%= link_to @album.title, @album %><br/>
+  <b>Movies:</b>
+  <%= @album.movies.size %><br/>
+  <b>User:</b>
+  <%= link_to @album.user.uname, @album.user %>
+</p>
+
+<div id="movie-list">
+</div>
+<script type="text/javascript">
+<%= remote_function :url => "/movies/list/select?album_id=#{@album.id}", :update => "movie-list" %>
+</script>
+
+<%= link_to 'Back to album list', albums_path %>
