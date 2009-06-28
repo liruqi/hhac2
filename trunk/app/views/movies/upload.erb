@@ -22,7 +22,7 @@
     <%= file_field_tag "file", :size=>31 %>
   </p>
   <p>
-    <%= hidden_field_tag "album_id", @album_id %>
+    <%= hidden_field_tag "movie[album_id]", @album_id %>
     <%= submit_tag 'Submit' %>
   </p>
 </div>
