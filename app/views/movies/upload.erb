@@ -2,6 +2,9 @@
 
 <div id="upload-movie-form">
 <%= form_tag "/movies/save/1", :multipart=>true %>
+  <p>
+    Album: <%= @album_name %>
+  </p>
   <p class="upload-movie-form-tfield">
     <%= label_tag "<b>title (<span style='color:red'>*</span>)</b>" %><br />
     <%= text_field_tag "movie[title]", nil, :size=>40 %>
@@ -19,6 +22,7 @@
     <%= file_field_tag "file", :size=>31 %>
   </p>
   <p>
+    <%= hidden_field_tag "album_id", @album_id %>
     <%= submit_tag 'Submit' %>
   </p>
 </div>
