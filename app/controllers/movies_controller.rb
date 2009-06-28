@@ -128,20 +128,30 @@ class MoviesController < ApplicationController
     end
   end
 
+  # Upload a new movie:
+  #   POST /movies/save/1
+  # Form data:
+  #   movie[title]
+  #   movie[info]
+  #   movie[info]
+  #   movie[album_d]
   def save
-    if current_user
+    if request.post? && current_user
       begin
         movie = Movie.new params[:movie]
-        puts params[:album_id]
-        movie.album_id = params[:album_id].to_i
-        p movie
         raise "Title cannot be empty." if (movie.title =~ /^\s*$/) != nil
 
         file = params[:file]  # Tempfile实例
         raise "File was not uploaded." if file == nil
 
-        # TODO
-        # 检查album和current_user的合法性
+        album = Album.find_by_id movie.album_id
+        if album
+          unless album.id == 1 || album.user_id == current_user.id
+            raise "You are not privileged to access this album." 
+          end
+        else
+          raise "Album does not exists."
+        end
 
         begin
           fname = Time.now.strftime("%Y%m%d%H%M%S")+"_"+file.original_filename
@@ -150,7 +160,6 @@ class MoviesController < ApplicationController
 
           movie.path = f.path
           movie.user_id = current_user.id
-          movie.album_id = 1
           movie.save
         rescue
           raise "Failed to save data."
