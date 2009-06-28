@@ -91,7 +91,9 @@ class CommentsController < ApplicationController
   def movie
     the_movie = Movie.find_by_id params[:id]
     if the_movie
-      comments = Comment.find :all, :conditions => {:movie_id => the_movie.id}
+      comments = Comment.find :all,
+                              :conditions => {:movie_id => the_movie.id},
+                              :order => "created_at DESC"
       render :partial => "of_movie", :locals => {:the_movie => the_movie, :comments => comments }
     end
   end

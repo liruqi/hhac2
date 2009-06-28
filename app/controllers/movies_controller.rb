@@ -199,4 +199,15 @@ class MoviesController < ApplicationController
       # render_404
     end
   end
+
+  def search
+    skey = params[:skey]
+    if request.post? || skey != nil
+      pattern = "%#{skey}%"
+      @movies = Movie.find :all, :conditions => ["title LIKE ? OR tags LIKE ? OR info LIKE ?", pattern, pattern, pattern]
+      render :partial => "search"
+    else
+      render :text => "<h1>404 Not Fount</h1>", :status => 404
+    end
+  end
 end

@@ -190,6 +190,12 @@ background-color: #ddd;
 .comment-list-item-body {
 padding: 5px 0;
 }
+#movie-search.before {
+padding: 0 0 15px 0;
+}
+#movie-search.after {
+padding: 0;
+}
 #right {
 display: inline;
 float: right;

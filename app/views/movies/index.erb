@@ -1,5 +1,20 @@
 <h2>视频列表</h2>
 
+<div id="movie-search" class="before">
+<script type="text/javascript">
+function SearchMovie()
+{
+<%= remote_function :url => "/movies/search/1", \
+                    :update => "movie-list", \
+                    :with => "'skey='+$('skey').value" %>
+$("movie-search").setAttribute("class", "after");
+}
+</script>
+<%= form_tag "" %>
+<%= text_field_tag "skey" %>
+<%= submit_tag "Search", :onclick=>"SearchMovie();return false;" %>
+</div>
+
 <div id="movie-list">
 </div>
 <script type="text/javascript">
