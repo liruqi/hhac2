@@ -35,7 +35,7 @@ test:
   pool: 5
   username: root
   password:
-#  socket: /var/lib/mysql/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
 
 production:
   adapter: mysql
@@ -45,4 +45,4 @@ production:
   pool: 5
   username: root
   password: 
-#  socket: /var/lib/mysql/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
