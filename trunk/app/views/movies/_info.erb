@@ -4,17 +4,17 @@
   </div>
 
   <div id="ajaxCon-movie-info" class="ajax-element-body">
-      <b><span class="info-tag">Title:<span></b>
+      <b><span class="info-tag">Title:</span></b>
       <%= link_to @movie.title, @movie %><br/>
-      <b><span class="info-tag">Album:<span></b>
+      <b><span class="info-tag">Album:</span></b>
       <%= link_to @movie.album.title, @movie.album %><br/>
-      <b><span class="info-tag">Tags:<span></b>
+      <b><span class="info-tag">Tags:</span></b>
       <%=h @movie.tags %><br/>
-      <b><span class="info-tag">Info:<span></b>
+      <b><span class="info-tag">Info:</span></b>
       <%=h @movie.info %><br/>
-      <b><span class="info-tag">Path:<span></b>
+      <b><span class="info-tag">Path:</span></b>
       <%=h @movie.path %><br/>
-      <b><span class="info-tag">User:<span></b>
+      <b><span class="info-tag">User:</span></b>
       <%= link_to @movie.user.uname, @movie.user %>
   </div>
 </div>

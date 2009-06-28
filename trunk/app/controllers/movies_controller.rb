@@ -117,9 +117,13 @@ class MoviesController < ApplicationController
   end
 
   def upload
-    if current_user
-      @movie = Movie.new
-    else
+    begin
+      raise if !current_user
+      @album_id = params[:id]
+      album = Album.find @album_id
+      raise unless album.user_id == current_user.id || album.id == 1
+      @album_name = album.title
+    rescue
       render_404
     end
   end
@@ -128,10 +132,16 @@ class MoviesController < ApplicationController
     if current_user
       begin
         movie = Movie.new params[:movie]
+        puts params[:album_id]
+        movie.album_id = params[:album_id].to_i
+        p movie
         raise "Title cannot be empty." if (movie.title =~ /^\s*$/) != nil
 
         file = params[:file]  # Tempfile实例
         raise "File was not uploaded." if file == nil
+
+        # TODO
+        # 检查album和current_user的合法性
 
         begin
           fname = Time.now.strftime("%Y%m%d%H%M%S")+"_"+file.original_filename

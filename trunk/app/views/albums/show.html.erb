@@ -13,4 +13,5 @@
 <%= remote_function :url => "/movies/list/select?album_id=#{@album.id}", :update => "movie-list" %>
 </script>
 
+<%= link_to 'Upload new movie', "/movies/upload/#{@album.id}" %><br/>
 <%= link_to 'Back to album list', albums_path %>
