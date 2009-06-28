@@ -1,5 +1,5 @@
+<ul class="mvlist-ul">
 <% @movies.each do |movie| %>
-  <ul class="mvlist-ul">
     <li class="mvlist-item">
       <div class="mvlist-item-head">
         <b><%= link_to movie.title, movie %></b>
@@ -15,5 +15,5 @@
     <%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
     </li>
-  </ul>
 <% end %>
+</ul>

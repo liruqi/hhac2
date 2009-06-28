@@ -62,17 +62,18 @@ text-align: center;
 }
 #head-logo {
 position: relative;
-float: left;
-width: 40%;
+text-align: left;
+left: 0;
+top: -18px;
+width: 50%;
 }
 #head-stuff {
 position: relative;
-float: left;
-width: 40%;
+width: 100%;
 }
 #login-info {
-//position: relative;
-background-color: #cccccc;
+position: relative;
+//background-color: #cccccc;
 text-align: right;
 }
 #login-info ul {
@@ -108,8 +109,6 @@ border-color: #ff0099;
 }
 #content {
 position: relative;
-//margin: 20px auto 10px;
-padding: 0;
 min-height: 400px;
 width: 100%;
 clear: both;
@@ -118,7 +117,7 @@ clear: both;
 position: absolute;
 top: 0;
 left: 0;
-margin: 15px 0;
+margin: 0;
 padding: 0;
 width: 100%;
 background-color: #ffffff;
@@ -141,7 +140,7 @@ padding: 0 10px;
 }
 #main {
 position: relative;
-top: 25px;
+top: 15px;
 background-color: #ffffcc;
 }
 #left {
@@ -160,7 +159,7 @@ background-color: #000;
 }
 .mvlist-ul {
 margin: 0;
-padding: 0 0 15px 0;
+padding: 0;
 width: 100%;
 }
 .mvlist-item {
@@ -168,7 +167,7 @@ line-height: 20px;
 list-style-image: none;
 list-style-position: outside;
 list-style-type: none;
-margin: 0;
+margin: 0 0 15px 0;
 padding: 0;
 background-color: #ddeedd;
 }
@@ -217,8 +216,7 @@ background-color: #ddeedd;
 }
 #footer {
 position: relative;
-left: 0;
-top: 20px;
+top: 40px;
 padding: 5px;
 text-align: center;
 clear: both;
