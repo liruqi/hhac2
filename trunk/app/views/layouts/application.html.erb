@@ -32,16 +32,11 @@ function render_ajaxCon_for_xlogin()
 <body>
   <div id="page">
     <div id="header">
-      <div id="head-logo">
-      <%= image_tag "hhac-top.gif", :alt=>"hhac-top.gif" %>
-      </div>
       <div id="head-stuff">
-
-
         <% if user && user.privilege > 1 %>
         <div id="login-info">
         <% else %>
-        <div id="login-info" style="position:relative;left:580px">
+        <div id="login-info">
         <% end %>
         <% if user %>
 <li><%= link_to user.uname, "/users/#{user.id}", :class=>"login-link" %></li>
@@ -51,8 +46,9 @@ function render_ajaxCon_for_xlogin()
 <li><%= link_to "注册", "/users/new", :class=>"login-link" %></li>
 <% end %>
         </div>
-
-
+      </div>
+      <div id="head-logo">
+      <%= image_tag "hhac-top.gif", :alt=>"hhac-top.gif" %>
       </div>
     </div>
 

@@ -1,20 +1,19 @@
-<h1>Listing comments</h1>
+<h2>最新评论</h2>
 
 <table>
   <tr>
     <th>Content</th>
-    <th>User</th>
     <th>Movie</th>
+    <th>User</th>
+    <th>Time</th>
   </tr>
 
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.content %></td>
-    <td><%= link_to comment.user.uname, comment.user %></td>
     <td><%= link_to comment.movie_id, comment.movie %></td>
-    <!--
-    <td><%= link_to 'Show', comment %></td>
-    -->
+    <td><%= link_to comment.user.uname, comment.user %></td>
+    <td><%= comment.created_at.strftime("%m-%d %H:%M:%S") %></td>
     <% if current_user && current_user.privilege > 1 %>
     <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
