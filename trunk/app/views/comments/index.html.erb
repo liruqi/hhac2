@@ -2,16 +2,16 @@
 
 <table>
   <tr>
-    <th>Content</th>
-    <th>Movie</th>
-    <th>User</th>
-    <th>Time</th>
+    <th>内容</th>
+    <th>视频</th>
+    <th>作者</th>
+    <th>发表时间</th>
   </tr>
 
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.content %></td>
-    <td><%= link_to comment.movie_id, comment.movie %></td>
+    <td><%= link_to comment.movie.title, comment.movie %></td>
     <td><%= link_to comment.user.uname, comment.user %></td>
     <td><%= comment.created_at.strftime("%m-%d %H:%M:%S") %></td>
     <% if current_user && current_user.privilege > 1 %>

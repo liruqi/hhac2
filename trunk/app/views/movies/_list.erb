@@ -5,14 +5,14 @@
         <b><%= link_to movie.title, movie %></b>
         by <%= link_to movie.user.uname, movie.user %><br/>
       </div>
-      <b><span class="info-tag">Album:</span></b><%= link_to movie.album.title, movie.album %><br/>
-      <b><span class="info-tag">Tags:</span></b><%= movie.tags %><br/>
-      <b><span class="info-tag">Info:</span></b><%= movie.info %><br/>
+      <b><span class="info-tag">专辑:</span></b><%= link_to movie.album.title, movie.album %><br/>
+      <b><span class="info-tag">标签:</span></b><%= movie.tags %><br/>
+      <b><span class="info-tag">描述:</span></b><%= movie.info %><br/>
     <% if current_user && (current_user.privilege>1 || current_user.id==movie.user_id)%>
-    <%= link_to 'Edit', edit_movie_path(movie) %>
+    <%= link_to '编辑', edit_movie_path(movie) %>
     <% end %>
     <% if current_user && current_user.privilege > 1 %>
-    <%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %>
+    <%= link_to '删除', movie, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
     </li>
 <% end %>

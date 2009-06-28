@@ -7,7 +7,7 @@
 </script>
 
 <% if current_user %>
-<%= link_to 'Upload New Movie', :action => :upload, :id => 1 %>
+<%= link_to '创建新视频', :action => :upload, :id => 1 %>
 <% else %>
-Please <b><%= link_to "login", "/login" %></b> to upload a new movie.
+您可以在 <b><%= link_to "登录", "/login" %></b> 后上传新视频
 <% end %>

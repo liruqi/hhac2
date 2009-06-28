@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Movies</th>
-    <th>Owner</th>
+    <th>专辑名称</th>
+    <th>视频总数</th>
+    <th>所有者</th>
   </tr>
 
 <% @albums.each do |album| %>
@@ -13,7 +13,7 @@
     <td style="text-align:center"><%= album.movies.size.to_s %></td>
     <td><%= link_to album.user.uname, album.user %></td>
 <% if current_user && current_user.privilege > 1%>
-    <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to '删除', album, :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>
   </tr>
 <% end %>
@@ -22,5 +22,5 @@
 <br />
 
 <% if current_user %>
-<%= link_to 'New album', new_album_path %>
+<%= link_to '创建新专辑', new_album_path %>
 <% end %>
