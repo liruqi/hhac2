@@ -1,16 +1,15 @@
 <p>
-<h3>Comments of movie
-<%= link_to the_movie.title, :controller => :movies, :action => :show, :id => the_movie.id %></h3>
+<h3><%= link_to the_movie.title, :controller => :movies, :action => :show, :id => the_movie.id %> 的最新评论</h3>
 
 <% if comments.size > 0 %>
 <ul class="comment-list-ul">
 <% comments.each do |comment| %>
 <li class="comment-list-item">
   <div class="comment-list-item-head">
-    <b><%= link_to comment.user.uname, :controller => :users, :action => :show, :id => comment.user.id %></b> posted at 
+    <b><%= link_to comment.user.uname, :controller => :users, :action => :show, :id => comment.user.id %></b> 发表于
 <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
 <% if current_user && current_user.privilege > 1 %>
-<%= link_to 'Destroy', comment, :confirm => "Are you sure?", :method => :delete %>
+<%= link_to '删除', comment, :confirm => "Are you sure?", :method => :delete %>
 <% end %>
   </div>
   <div class="comment-list-item-body">
