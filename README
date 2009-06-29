@@ -50,3 +50,5 @@ $ ./script/server
 在self.up中增加几行，例如：
   add_column :movies, :album_id, :integer
   Movie.update_all("album_id=1")
+
+!!!file database.yml
