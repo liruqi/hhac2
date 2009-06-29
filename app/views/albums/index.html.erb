@@ -1,26 +1,29 @@
+<% if current_user %>
+<h2>我的专辑</h2>
+<div id="users-albums">
+</div>
+<h2>其他专辑</h2>
+<div id="other-albums">
+</div>
+<script type="text/javascript">
+<%= remote_function :url => "/albums/list/1?uid=#{current_user.id}",
+    :method => "get", :update => "users-albums" %>
+<%= remote_function :url => "/albums/list/2?uid=#{current_user.id}",
+    :method => "get", :update => "other-albums" %>
+</script>
+<% else %>
 <h2>所有专辑</h2>
-
-<table>
-  <tr>
-    <th>专辑名称</th>
-    <th>视频总数</th>
-    <th>所有者</th>
-  </tr>
-
-<% @albums.each do |album| %>
-  <tr>
-    <td><%= link_to album.title, album %></td>
-    <td style="text-align:center"><%= album.movies.size.to_s %></td>
-    <td><%= link_to album.user.uname, album.user %></td>
-<% if current_user && current_user.privilege > 1%>
-    <td><%= link_to '删除', album, :confirm => 'Are you sure?', :method => :delete %></td>
+<div id="album-list">
+</div>
+<script type="text/javascript">
+<%= remote_function :url => "/albums/list/0",
+    :method => "get", :update => "album-list" %>
+</script>
 <% end %>
-  </tr>
-<% end %>
-</table>
+
 
 <br />
 
 <% if current_user %>
-<%= link_to '创建新专辑', new_album_path %>
+<b><%= link_to '创建新专辑', new_album_path %></b>
 <% end %>

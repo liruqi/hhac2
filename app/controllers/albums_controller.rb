@@ -94,4 +94,34 @@ class AlbumsController < ApplicationController
       render :text => "<h1>403 Forbidden</h1>", :status => 403
     end
   end
+
+  # GET /albums/list/1?uid=xxx
+  def list
+    begin
+      raise unless request.get?
+      if params[:id] == "0"          # all albums
+        @albums = Album.all
+        render :partial => "list"
+      elsif params[:id] == "1"       # albums belongs to an user
+        uid = params["uid"].to_i
+        raise unless uid > 0
+        user = User.find uid
+        @albums = user.albums
+        render :partial => "list"
+      elsif params[:id] == "2"    # albums not belongs to an user
+        uid = params["uid"].to_i
+        raise unless uid > 0
+        user = User.find uid
+        @albums = Album.find :all, :conditions => "user_id != #{uid}"
+        render :partial => "list"
+      else
+        raise
+      end
+    rescue
+      render_404
+    end
+  end
+
+  def xxx
+  end
 end
