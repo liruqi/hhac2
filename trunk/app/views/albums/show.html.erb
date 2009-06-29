@@ -14,7 +14,7 @@
 </script>
 
 <% if current_user %>
-<%= link_to 'Upload new movie', "/movies/upload/#{@album.id}" %><br/>
+<%= link_to '向本专辑添加新视频', "/movies/upload/#{@album.id}" %><br/>
 <% end %>
 
-<%= link_to 'Back to album list', albums_path %>
+<%= link_to '返回专辑列表', albums_path %>
