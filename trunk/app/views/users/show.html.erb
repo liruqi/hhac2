@@ -21,20 +21,20 @@
 <% if current_user.privilege == 3 %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>
+
 <% if current_user.privilege > 1 %>
 <b><%= link_to 'List All Users', users_path %></b>
 <% end %>
 
-<div>
 <hr>
-我的专辑<br/><br/>
-
-<div id="movie-list">
+<div>
+我的专辑<br/>
+<div id="users-albums">
 </div>
 <script type="text/javascript">
-<%= remote_function :url => "/movies/list/select?user_id=#{@user.id}", :update => "movie-list" %>
+<%= remote_function :url => "/albums/list/1?uid=#{current_user.id}",
+    :method => "get", :update => "users-albums" %>
 </script>
-
 </div>
 
 <div>
