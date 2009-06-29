@@ -18,7 +18,7 @@ svn checkout https://hhac2.googlecode.com/svn/trunk/ hhac2
 cd hhac2
 
 mysql -uroot -pgogogo -e "CREATE USER hhac@'localhost' IDENTIFIED BY 'iamharmless';"
-mysql -uroot -p -e "CREATE DATABASE IF NOT EXISTS hhac2"
+mysql -uroot -p -e "CREATE DATABASE IF NOT EXISTS hhac2 CHARACTER SET utf8"
 mysql -uroot -p -e "GRANT ALL PRIVILEGES ON hhac2.* TO hhac"
 
 rake db:migrate

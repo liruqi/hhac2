@@ -203,8 +203,8 @@ class MoviesController < ApplicationController
   def search
     skey = params[:skey]
     if request.post? || skey != nil
-      key_list = skey.split(/\s+/)
-      pattern = "%"+key_list.join("%")+"%"
+      word_list = skey.split(/\W+/)
+      pattern = "%"+word_list.join("%")+"%"
       @movies = Movie.find :all, :conditions => ["title LIKE ? OR tags LIKE ? OR info LIKE ?", pattern, pattern, pattern]
       render :partial => "search"
     else
