@@ -1,14 +1,24 @@
 == Home of Harmless Amination & Comic
 
 === 安装所需软件包
-# yum install ruby
-# yum install ruby-mysql
-# yum install ruby-sqlite3
-# yum install rubygems
+安装ruby
+sudo apt-get install ruby
+sudo apt-get install irb
+sudo apt-get install rdoc
 
-# gem install rails --include-dependencies
-# gem install mongrel
+安装rubygems
+从这个页面下载最新的rubygems,(http://rubyforge.org/frs/?group_id=126)
 
+wget http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz
+tar -xvf rubygems-1.3.4.tgz
+cd rubygems-1.3.4.tgz
+sudo ruby setup.rb
+
+如果gem没有的话，创建软连接
+ln -s gem1.8 gem
+
+gem install rails --include-dependencies
+gem install mongrel
 
 === SVN签出
 $ svn checkout https://hhac2.googlecode.com/svn/trunk/ hhac2 --username XXX
@@ -24,8 +34,6 @@ $ rake db:migrate
 
 === 测试－启动服务
 $ ./script/server
-
-
 
 
 ---------------------------------------------------------------------
