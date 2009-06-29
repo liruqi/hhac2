@@ -20,6 +20,10 @@ ln -s gem1.8 gem
 gem install rails --include-dependencies
 gem install mongrel
 
+sudo apt-get install openssl
+sudo apt-get install libopenssl-ruby
+
+
 === SVN签出
 $ svn checkout https://hhac2.googlecode.com/svn/trunk/ hhac2 --username XXX
 $ cd hhac2
