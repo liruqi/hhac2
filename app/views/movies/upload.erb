@@ -1,30 +1,30 @@
-<h2>Upload New Movie</h2>
+<h2>上传新视频</h2>
 
 <div id="upload-movie-form">
 <%= form_tag "/movies/save/1", :multipart=>true %>
   <p>
-    Album: <%= @album_name %>
+    所属专辑: <%= @album_name %>
   </p>
   <p class="upload-movie-form-tfield">
-    <%= label_tag "<b>title (<span style='color:red'>*</span>)</b>" %><br />
+    <%= label_tag "<b>视频名称 (<span style='color:red'>*</span>)</b>" %><br />
     <%= text_field_tag "movie[title]", nil, :size=>40 %>
   </p>
   <p class="upload-movie-form-tfield">
-    <%= label_tag "<b>tags</b>" %><br />
+    <%= label_tag "<b>视频标签</b>" %><br />
     <%= text_field_tag "movie[tags]", nil, :size=>40 %>
   </p>
   <p>
-    <%= label_tag "<b>information</b>" %><br />
+    <%= label_tag "<b>视频简介</b>" %><br />
     <%= text_area_tag "movie[info]", nil %>
   </p>
   <p>
-    <%= label_tag "<b>path (<span style='color:red'>*</span>)</b>" %><br />
+    <%= label_tag "<b>视频路径 (<span style='color:red'>*</span>)</b>" %><br />
     <%= file_field_tag "file", :size=>31 %>
   </p>
   <p>
     <%= hidden_field_tag "movie[album_id]", @album_id %>
-    <%= submit_tag 'Submit' %>
+    <%= submit_tag '提交' %>
   </p>
 </div>
 
-<%= link_to 'Back', movies_path %>
+<%= link_to '返回', movies_path %>
