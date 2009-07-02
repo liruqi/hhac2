@@ -31,6 +31,7 @@ $ cd hhac2
 
 === 数据库的配置
 $ mysql -uroot -p -e "CREATE DATABASE IF NOT EXISTS hhac2 CHARACTER SET utf8"
+$ mysql -uroot -p -e "CREATE USER hhac IDENTIFIED BY 'iamharmless'"
 $ mysql -uroot -p -e "GRANT ALL PRIVILEGES ON hhac2.* TO hhac"
 
 $ rake db:migrate
@@ -51,4 +52,8 @@ $ ./script/server
   add_column :movies, :album_id, :integer
   Movie.update_all("album_id=1")
 
-!!!file database.yml
+---------------------------------------------------------------------
+添加视频预览
+mkdir public/preview
+svn add images/preview/
+svn propset svn:ignore '*' images/preview/

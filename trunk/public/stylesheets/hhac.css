@@ -241,3 +241,12 @@ height: 100px;
 #upload-movie-form .upload-movie-form-tfield input {
 width: 75%;
 }
+.mv-preview-img {
+position: absolute;
+}
+.mv-specific-div {
+    min-height: 96px;
+}
+.mv-details-div {
+margin-left: 122px;
+}
