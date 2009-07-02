@@ -1,19 +1,38 @@
 <ul class="mvlist-ul">
 <% @movies.each do |movie| %>
     <li class="mvlist-item">
+
       <div class="mvlist-item-head">
         <b><%= link_to movie.title, movie %></b>
         by <%= link_to movie.user.uname, movie.user %>
       </div>
+
+
+      <div class="mv-specific-div">
+
+    <div class="mv-preview-img">
+    <% imgfile = "preview/#{movie.id}.jpg" %>
+    <% deffile = "hhac-defpreview.gif" %>
+    <% begin %>
+    <% f = File.new "#{RAILS_ROOT}/public/images/#{imgfile}", "rb" %>
+    <%= image_tag imgfile, :size => "120x90" %>
+    <% rescue %>
+    <%= image_tag deffile, :size => "120x90" %>
+    <% end %>
+    </div>
+
+    <div class="mv-details-div">
       <b><span class="info-tag">专辑:</span></b><%= link_to movie.album.title, movie.album %><br/>
       <b><span class="info-tag">标签:</span></b><%= movie.tags %><br/>
-      <b><span class="info-tag">描述:</span></b><%= movie.info %><br/>
+      <b><span class="info-tag">描述:</span></b><%= movie.info[0..80] %><br/>
     <% if current_user && (current_user.privilege>1 || current_user.id==movie.user_id)%>
     <%= link_to '编辑', edit_movie_path(movie) %>
     <% end %>
     <% if current_user && current_user.privilege > 1 %>
     <%= link_to '删除', movie, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
+    </div>
+    </div>
     </li>
 <% end %>
 </ul>

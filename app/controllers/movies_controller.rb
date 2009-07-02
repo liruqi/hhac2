@@ -93,6 +93,9 @@ class MoviesController < ApplicationController
       @movie = Movie.find(params[:id])
       File.delete @movie.path
       @movie.destroy
+
+      # TODO
+      # delete preview image at the same time
      
       respond_to do |format|
         format.html { redirect_to(movies_url) }
@@ -161,6 +164,10 @@ class MoviesController < ApplicationController
           movie.path = f.path
           movie.user_id = current_user.id
           movie.save
+
+          imgname = "#{RAILS_ROOT}/public/images/preview/#{movie.id}.jpg"
+          cmd = "ffmpeg -y -i #{f.path} -f image2 -ss 30 -vframes 1 -an #{imgname}"
+          system cmd
         rescue
           raise "Failed to save data."
         end
