@@ -1,0 +1,27 @@
+一、几个软件需要下载的：
+1. windows平台下的ruby
+官网下载 http://www.ruby-lang.org/en/downloads
+我下载的版本是一键安装的 1.8.6(http://rubyforge.org/frs/download.php/47082/ruby186-27_rc2.exe)
+  
+2. svn工具 
+官网下载 http://tortoisesvn.net/downloads
+
+3. windows平台下的mysql
+被网上一个老帖子误导，我装的是mysql 5.0：
+http://dev.mysql.com/downloads/mysql/5.0.html
+其实可以装mysql5.1的，后续工作一样。
+
+二、安装
+1. 先将三个东西都用鼠标安装。用svn把代码弄下来
+2. 给ruby装上rails
+ gem install rails  
+3. 给ruby装上mysql
+ gem install mysql
+
+4.后面就是现有readme 33行之后的事情了。抄过来。
+
+mysql -uroot -p -e "CREATE DATABASE IF NOT EXISTS hhac2 CHARACTER SET utf8"   
+mysql -uroot -p -e "CREATE USER hhac IDENTIFIED BY 'iamharmless'" 
+mysql -uroot -p -e "GRANT ALL PRIVILEGES ON hhac2.* TO hhac"    
+rake db:migrate   
+./script/server 
