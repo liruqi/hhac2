@@ -1,24 +1,24 @@
-Ò»¡¢¼¸¸öÈí¼şĞèÒªÏÂÔØµÄ£º
-1. windowsÆ½Ì¨ÏÂµÄruby
-¹ÙÍøÏÂÔØ http://www.ruby-lang.org/en/downloads
-ÎÒÏÂÔØµÄ°æ±¾ÊÇÒ»¼ü°²×°µÄ 1.8.6(http://rubyforge.org/frs/download.php/47082/ruby186-27_rc2.exe)
+ï»¿ä¸€ã€å‡ ä¸ªè½¯ä»¶éœ€è¦ä¸‹è½½çš„ï¼š
+1. windowså¹³å°ä¸‹çš„ruby
+å®˜ç½‘ä¸‹è½½ http://www.ruby-lang.org/en/downloads
+æˆ‘ä¸‹è½½çš„ç‰ˆæœ¬æ˜¯ä¸€é”®å®‰è£…çš„ 1.8.6(http://rubyforge.org/frs/download.php/47082/ruby186-27_rc2.exe)
   
-2. svn¹¤¾ß 
-¹ÙÍøÏÂÔØ http://tortoisesvn.net/downloads
+2. svnå·¥å…· 
+å®˜ç½‘ä¸‹è½½ http://tortoisesvn.net/downloads
 
-3. windowsÆ½Ì¨ÏÂµÄmysql
-±»ÍøÉÏÒ»¸öÀÏÌû×ÓÎóµ¼£¬ÎÒ×°µÄÊÇmysql 5.0£º
+3. windowså¹³å°ä¸‹çš„mysql
+è¢«ç½‘ä¸Šä¸€ä¸ªè€å¸–å­è¯¯å¯¼ï¼Œæˆ‘è£…çš„æ˜¯mysql 5.0ï¼š
 http://dev.mysql.com/downloads/mysql/5.0.html
-ÆäÊµ¿ÉÒÔ×°mysql5.1µÄ£¬ºóĞø¹¤×÷Ò»Ñù¡£
+å…¶å®å¯ä»¥è£…mysql5.1çš„ï¼Œåç»­å·¥ä½œä¸€æ ·ã€‚
 
-¶ş¡¢°²×°
-1. ÏÈ½«Èı¸ö¶«Î÷¶¼ÓÃÊó±ê°²×°¡£ÓÃsvn°Ñ´úÂëÅªÏÂÀ´
-2. ¸øruby×°ÉÏrails
+äºŒã€å®‰è£…
+1. å…ˆå°†ä¸‰ä¸ªä¸œè¥¿éƒ½ç”¨é¼ æ ‡å®‰è£…ã€‚ç”¨svnæŠŠä»£ç å¼„ä¸‹æ¥
+2. ç»™rubyè£…ä¸Šrails
  gem install rails  
-3. ¸øruby×°ÉÏmysql
+3. ç»™rubyè£…ä¸Šmysql
  gem install mysql
 
-4.ºóÃæ¾ÍÊÇÏÖÓĞreadme 33ĞĞÖ®ºóµÄÊÂÇéÁË¡£³­¹ıÀ´¡£
+4.åé¢å°±æ˜¯ç°æœ‰readme 33è¡Œä¹‹åçš„äº‹æƒ…äº†ã€‚æŠ„è¿‡æ¥ã€‚
 
 mysql -uroot -p -e "CREATE DATABASE IF NOT EXISTS hhac2 CHARACTER SET utf8"   
 mysql -uroot -p -e "CREATE USER hhac IDENTIFIED BY 'iamharmless'" 
