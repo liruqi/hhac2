@@ -9,3 +9,5 @@ mencoder input.avi -sub input.srt -subcp cp936 -o output.flv -of lavf -oac mp3la
 input.avi 输入的视频文件
 
 input.srt 输入的srt格式字幕文件
+
+output.flv 输出文件名
