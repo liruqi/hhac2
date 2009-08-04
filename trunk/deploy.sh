@@ -3,11 +3,13 @@
 #----------------  Dependencies  ------------------
 # gcc, mysql, openssl, subversion, ffmpeg
 
-# ---------------  Install base ruby  ------------------
-sudo apt-get install ruby irb rdoc
-sudo apt-get install ruby-dev    # mkmf included; gem use mkmf to build mongrel
-sudo apt-get install libmysql-ruby
-sudo apt-get install libopenssl-ruby
+# ---------------  Checkout the source && setup hhac2  ------------------
+# svn checkout https://hhac2.googlecode.com/svn/trunk/ hhac2
+# !!this step should be done first, for this script comes from here!!!
+
+# ---------------  Install base mysql & ruby & ffmpeg ------------------
+sudo apt-get install mysql-server ruby irb rdoc ruby-dev libmysql-ruby libopenssl-ruby ffmpeg
+# mkmf included in ruby-dev; gem use mkmf to build mongrel
 
 # ---------------  Install rubygems  ------------------
 # NOTE:
@@ -23,9 +25,7 @@ sudo ln -s /usr/bin/gem1.8 /usr/bin/gem
 sudo gem install rails --version=2.3.2 --include-dependencies
 sudo gem install mongrel mongrel_cluster
 
-# ---------------  Checkout the source && setup hhac2  ------------------
-svn checkout https://hhac2.googlecode.com/svn/trunk/ hhac2
-cd hhac2
+cd ../hhac2
 
 # Setup db-user and database for hhac2
 chmod u+x ./script/setup_db.sh
