@@ -1,22 +1,16 @@
 <div id="player">
-  <object type="application/x-shockwave-flash" data="/player.swf" width="480" height="360" id="vcastr3">
-    <param name="movie" value="player.swf"/> 
-    <param name="allowFullScreen" value="true" />
-    <param name="FlashVars" value="xml=
-      <vcastr>
-        <channel>
-          <item>
-            <source>http://<%= request.host_with_port%>/movies/stream/<%= @movie.id %></source>
-            <duration></duration>
-            <title></title>
-          </item>
-        </channel>
-        <config>
-        </config>
-        <plugIns>
-        </plugIns>
-      </vcastr>"/>
+<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="480" height="360">
+  <param name="movie" value="/player-viral.swf" />
+  <param name="allowfullscreen" value="true" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="flashvars" value="type=video&file=http://<%= request.host_with_port%>/movies/stream/<%= @movie.id%>" />
+  <object type="application/x-shockwave-flash" data="/player-viral.swf" width="480" height="360">
+    <param name="movie" value="/player-viral.swf" />
+    <param name="allowfullscreen" value="true" />
+    <param name="allowscriptaccess" value="always" />
+    <param name="flashvars" value="type=video&file=http://<%= request.host_with_port%>/movies/stream/<%= @movie.id%>" />
   </object>
+</object>
 </div>
 
 <div id="div-comments">
