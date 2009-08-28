@@ -166,7 +166,7 @@ class MoviesController < ApplicationController
           movie.save
 
           imgname = "#{RAILS_ROOT}/public/images/preview/#{movie.id}.jpg"
-          cmd = "ffmpeg -y -i #{f.path} -f image2 -ss 30 -vframes 1 -an #{imgname}"
+          cmd = "ffmpeg -y -i '#{f.path}' -f image2 -ss 30 -vframes 1 -an '#{imgname}'"
           system cmd
         rescue
           raise "Failed to save data."
