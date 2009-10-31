@@ -106,10 +106,11 @@ class MoviesController < ApplicationController
     end
   end
 
-  # GET /movies/stream/1
+  # GET /movies/stream/1.flv
   def stream
     begin
-      @movie = Movie.find(params[:id])
+      id = params[:id].to_i
+      @movie = Movie.find(id)
       send_file @movie.path,
                 :type => "video/x-flv",
                 :disposition => "inline",

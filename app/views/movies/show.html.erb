@@ -1,16 +1,16 @@
 <div id="player">
-<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="480" height="360">
-  <param name="movie" value="/player-viral.swf" />
-  <param name="allowfullscreen" value="true" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="flashvars" value="type=video&file=http://<%= request.host_with_port%>/movies/stream/<%= @movie.id%>" />
-  <object type="application/x-shockwave-flash" data="/player-viral.swf" width="480" height="360">
-    <param name="movie" value="/player-viral.swf" />
-    <param name="allowfullscreen" value="true" />
-    <param name="allowscriptaccess" value="always" />
-    <param name="flashvars" value="type=video&file=http://<%= request.host_with_port%>/movies/stream/<%= @movie.id%>" />
-  </object>
-</object>
+  <script type='text/javascript' src='/swfobject.js'></script>
+
+  <div id='mediaspace'>This text will be replaced</div>
+
+  <script type='text/javascript'>
+    var so = new SWFObject('/player.swf','ply','480','360','9','#ffffff');
+    so.addParam('allowfullscreen','true');
+    so.addParam('allowscriptaccess','always');
+    so.addParam('wmode','opaque');
+    so.addVariable('file',"http://<%=request.host_with_port%>/movies/stream/<%= @movie.id%>.flv");
+    so.write('mediaspace');
+  </script>
 </div>
 
 <div id="div-comments">
